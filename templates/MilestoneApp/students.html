@@ -1,0 +1,212 @@
+{% extends 'MilestoneApp/index.html' %}
+{% load static %}
+
+{% block title_content %}
+  <title>Project Management | Students</title>
+{% endblock %}
+
+<!-- This contains the popup form -->
+{% block add_content %}
+<div class="popup-del">
+  <div class="overlay">
+    <div class="del-content">
+      <div class="del-title">
+        <h3>Are you sure to delete <strong></strong> students?</h3>
+      </div>
+        <div class="del-btn">
+            <button type="button" name="multi-delete" class='btn btn1 yes-delete'>Yes</button>
+            <button type="button" class='btn btn1 no-delete' onclick="del_popup()">No</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="popup" id="student">
+  <div class="overlay"></div>
+  <div class="popup-content">
+    <div class="close-btn" onclick="popup()"><i class="fas fa-plus"></i></div>
+    <div class="container">
+      <div class="login-content">
+        {% if project_exists %}
+        <form id="registration" class="registration" methond="post">
+          <input type="hidden" name="purpose" value="create">
+          {% csrf_token %}
+          <h2 class="title">Register a new student</h2>
+                <div class="input-div one">
+                   <div class="i">
+                      <i class="fas fa-user"></i>
+                   </div>
+                   <div class="div">
+                      <h5>Student Name</h5>
+                      {{ student_form.student_name }}
+                   </div>
+                </div>
+                <div class="input-div pass">
+                   <div class="i">
+                      <i class="fas fa-pencil-alt"></i>
+                   </div>
+                   <div class="div">
+                      <h5>Choose the project</h5>
+                      {{ student_form.student_project }}
+                   </div>
+                </div>
+                <div class="input-div pass">
+                   <div class="i">
+                      <i class="far fa-clock"></i>
+                   </div>
+                   <div class="div">
+                      <h5>Enter the deadline</h5>
+                      {{ student_form.student_deadline }}
+                   </div>
+                </div>
+                <div class="photo">
+                  {{ student_form.student_image }}
+                  <label class="label" for="file">
+                    <i class="far fa-image"></i>
+                    <p>&nbsp; Choose your photo</p>
+                  </label>
+                  <p class="edit-image"><em>Just submit if you don't wanna change the image</em></p>
+                </div>
+                <button type="submit" class="btn btn1" value="">Register</button>
+              </form>
+        {% else %}
+        <div class="no-project" id="no-project">
+          <div class="no-project-sign">
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="no-projet-content">
+            <h3>No project created yet</h3>
+            <p>Go ahead and create some awesome projects for your students.</p>
+          </div>
+          <div class="no-project-button">
+            <a href="{% url 'projects' %}">
+              <button type="button" name="button">NEW PROJECT</button>
+            </a>
+          </div>
+        </div>
+        {% endif%}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+<!-- This contains the main content -->
+{% block page_content%}
+<form id="student_list" class="form-student" method="post">
+  {% csrf_token %}
+  <div class="header-wrap">
+    <h2>Students</h2>
+    <div class="btn-main">
+      <div class="check-delete">
+        <span>
+          <button type="button" class="multidelete" name="multidelete">Delete</button>
+        </span>
+      </div>
+      <div class="check-select">
+        <span>
+          <button type="button" class="multiselect" name="multiselect">Select all</button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="student_background"></div>
+  <div class="student-wrap">
+    <div class="heading">
+      <div class="add_student" onclick="popup()">
+        <div class="add">
+          <span><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="add_content">
+          <p>Add a new student</p>
+        </div>
+      </div>
+      <div class="student_id">
+        <h4>ID</h4>
+      </div>
+      <div class="student_name">
+        <h4>Name</h4>
+      </div>
+      <div class="student_project">
+        <h4>Project</h4>
+      </div>
+      <div class="student_deadline">
+        <h4>Deadline</h4>
+      </div>
+      <div class="student_action">
+        <h4>Action</h4>
+      </div>
+    </div>
+    <div class="student-list">
+      {% if student_list %}
+        {% for student in student_list %}
+          <div class="student_item" id="SD{{ student.id }}">
+            <div class="inside_selection">
+              <input type="checkbox" class="checkbox" name="" value="{{ student.id }}">
+              <div class="profile_img" style="background-image: url('{{ student.student_image.url }}')"></div>
+            </div>
+            <div class="inside_id">
+              <p>SD{{ student.id }}</p>
+            </div>
+            <div class="inside_name">
+              <p>{{ student.student_name }}</p>
+            </div>
+            <div class="inside_project">
+              <p>{{ student.student_project }}</p>
+            </div>
+            <div class="inside_deadline">
+              <p>{{ student.student_deadline }}</p>
+            </div>
+            <div class="inside_action">
+              <button type="button" name="edit_item" value="{{ student.id }}" class='edit-item'>
+                <div>
+                  <i class="fas fa-pen"></i>
+                  <span>Edit</span>
+                </div>
+                <div class="line"></div>
+              </button>
+              <button type="button" name="remove-item" value="{{ student.id }}" class='remove-item'>
+              {% csrf_token %}
+                <div>
+                  <i class="fas fa-trash"></i>
+                  <span>Remove</span>
+                </div>
+                <div class="line"></div>
+              </button>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      <div class="no-student">
+        <div class="add-student" onclick="popup()">
+          <i class="fas fa-user-plus"></i>
+          <h4>Add a new student</h4>
+        </div>
+        <a class="add-project" href="{% url 'projects' %}">
+            <i class="fas fa-plus"></i>
+            <h4>Create a new project</h4>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</form>
+{% endblock %}
+
+<!-- This contains the javascript for this page -->
+{% block javascript_page %}
+<script type="text/javascript" src='{% static 'javascript/img-upload.js' %}'></script>
+<script type="text/javascript" src="{% static "javascript/ajax-request-student.js" %}"></script>
+<script type="text/javascript" src="{% static "javascript/select-checkbox.js" %}"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    let no_project = $('#no-project').length
+    if (no_project !== 0){
+      $('div#student .popup-content').css('height', '350px')
+      $('div#student .close-btn').css('z-index', '8')
+      $('div#student .close-btn i').css('color', '#000')
+    }
+  })
+</script>
+{% endblock %}

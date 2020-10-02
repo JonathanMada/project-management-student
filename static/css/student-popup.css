@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+div#student .popup-content {
+  width:400px;
+  height:550px;
+}
+
+div#student .login-content{
+  margin-top: 30px;
+}
+
+div#student .login-content .input-div{
+  margin: 20px 0;
+}
+
+div#student .login-content .photo {
+  margin-top: 50px;
+}
+
+div#student .login-content button {
+  margin-top: 50px;
+}
+
+.popup #selection  {
+  position: relative;
+  display: block;
+  width: 100%;
+  top: 30%;
+  padding-left: 5px;
+  font-size: 1rem;
+  font-weight: lighter;
+  border: none;
+  outline: none;
+  background: none;
+  color: #555;
+}
+
+input[type=date]:required:invalid::-webkit-datetime-edit {
+    color: transparent;
+    transition: all 0.3s;
+}
+input[type=date]:focus::-webkit-datetime-edit {
+    color: black !important;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  position: relative;
+  top: 2px;
+  transform: translateX(50%);
+  z-index: 5;
+}
+
+div.focus div input[type="date"]::-webkit-calendar-picker-indicator {
+  display: inline-block
+}
+
+p.edit-image {
+  position: absolute;
+  display: none;
+  text-align: center;
+  top: 40px;
+  left: 10px;
+  font-size: 0.7rem;
+  font-weight: bolder;
+  color: red;
+}
+
+div#student .login-content .no-project {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width:400px;
+  height:550px;
+  padding: 30% 0;
+  top: -130px;
+  left: -15%;
+}
+
+.no-project .no-project-sign,
+.no-project .no-projet-content,
+.no-project .no-project-button{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.no-project .no-project-sign{
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border: 3px solid #06d6a0;
+  border-radius: 50%;
+  top: 5%;
+}
+
+.no-project .no-project-sign i{
+  color: #06d6a0;
+  transform: rotate(45deg) scale(2.75);
+}
+
+.no-project .no-projet-content{
+  justify-content: center;
+  align-items: center;
+  top: 35px;
+}
+
+.no-project .no-projet-content p{
+  font-size: 0.8rem;
+  padding: 20px 35px;
+}
+
+.no-project .no-project-button{
+  justify-content: center;
+  align-items: center;
+  top: -5%;
+}
+
+.no-project .no-project-button a{
+  width: 50%;
+  transform: scale(1);
+  transition: all 0.3s;
+}
+
+.no-project .no-project-button a:hover{
+  width: 50%;
+  transform: scale(1.04);
+}
+
+.no-project .no-project-button a button{
+  height: 50px;
+  background-color: #06d6a0;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-weight: bolder;
+  border-radius: 5px;
+}

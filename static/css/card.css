@@ -1,0 +1,264 @@
+.main_body .container .item_wrap{
+	display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.main_body .container .item_wrap .card{
+ position: relative;
+ margin-bottom: 20px;
+ width: 300px;
+ height: 370px;
+ transition: 0.3s ease-out;
+}
+
+.main_body .container .item_wrap div p.dummy-card{
+	display: block;
+	visibility: hidden;
+	position: relative;
+  margin-bottom: 20px;
+  width: 300px;
+  height: 370px;
+}
+
+.main_body .container .item_wrap .card .imgbox{
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card .imgbox .img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  border-radius: 5px;
+  display: block;
+	background-repeat: no-repeat;
+	background-position: center top;
+  background-size: auto 95%;
+  transition: 0.3s;
+}
+
+.card .content{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  padding: 12px;
+  border-radius: 5px;
+  background: #fff;
+  transition: all 0.5s cubic-bezier(.48, -0.28, 0.41, 1.4);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.group-content{
+	display: block;
+	position: relative;
+  top: 0;
+	left: 0;
+	transform: translateX(50%, 50%);
+}
+
+.content .group-btn {
+	display: block;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  transition: all 0.3s;
+}
+
+.content .group-content p{
+  margin: 0;
+  padding: 0.5em 1em;
+  transform: translateY(2em);
+  line-height: 1.3em;
+  transition: 0.3s;
+  text-align: center;
+  opacity: 0;
+}
+
+.content .group-content h2 {
+	margin-top: -5px;
+  text-align: center;
+}
+
+.card.active .content{
+  width: 100%;
+  height: 75%;
+  left: 0;
+  bottom: 0;
+}
+
+.card.active .content .group-btn {
+  top: 87%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.card.active .group-content p{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.container .add_card {
+  position: fixed;
+  display: flex;
+  top: 90%;
+  left: 95%;
+  transform: translate(-50%,-50%);
+  cursor: pointer;
+}
+
+.container .add_card .add_sign,
+.container .add_card .add_sign .plus_sign {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.container .add_card .add_sign {
+  background-color: #3421C0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.container .add_card:hover .add_sign {
+  box-shadow: 0px 0px 10px 10px #ccc;
+}
+
+.container .add_card .add_sign .plus_sign i {
+  color: #fff;
+  transition: all 0.3s;
+}
+
+.container .add_card:hover .add_sign .plus_sign i {
+  transform: rotate(135deg);
+}
+
+.main_body .container .item_wrap .card .delete{
+	opacity: 0;
+	position: relative;
+	top: 7%;
+	left: 0;
+	width: 100%;
+	height: 5%;
+	z-index: 1;
+	transition: all 0.3s;
+}
+
+.card .delete .btn-delete{
+	position: absolute;
+	top: 0;
+	left: 90%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card .delete .btn-delete{
+	position: absolute;
+	top: 0;
+	left: 90%;
+	width: 25px;
+	height: 25px;
+	background-color: #fff;
+	border-radius: 2px;
+  cursor: pointer;
+}
+
+.main_body .container .item_wrap .card:hover .delete{
+	opacity: 1;
+}
+
+.card .delete .btn-delete:hover{
+	background-color: #f0efeb;
+}
+
+.main_body .container .item_wrap .nocard{
+	position: relative;
+  margin-bottom: 20px;
+  width: 300px;
+  height: 370px;
+}
+
+.item_wrap .nocard .nocard-cntn{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	background-color: #06d6a0;
+	border-radius: 5px;
+	color: #fff;
+	font-weight: bolder;
+}
+
+.nocard .nocard-cntn .add-sign{
+	border: 3px solid #fff;
+	width: 55px;
+	height: 55px;
+	border-radius: 50%;
+	margin-bottom: 15px;
+	transform: scale(1.15);
+}
+
+.nocard .nocard-cntn .add-sign i{
+	position: relative;
+	color: #fff;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.nocard .nocard-cntn .add-cntn{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.nocard-cntn .add-cntn h3,
+.nocard-cntn .add-cntn p {
+	text-align: center;
+}
+
+.nocard-cntn .add-cntn p {
+	font-size: 0.9rem;
+	font-weight: normal;
+	margin-top: 10px;
+	padding: 0 20px;
+}
+
+.nocard-cntn .add-cntn button{
+	outline: none;
+	position: relative;
+	display: inline-block;
+	left: 50%;
+	transform: translateX(-50%) scale(1);
+	width: 60%;
+	height: 30px;
+	margin-top: 20px;
+	border-radius: 3px;
+	background-color: #fff;
+	border: none;
+	color: #06d6a0;
+	font-weight: bolder;
+	transition: 0.3s;
+}
+
+.nocard-cntn .add-cntn button:hover {
+	transform: translateX(-50%) scale(1.1);
+}

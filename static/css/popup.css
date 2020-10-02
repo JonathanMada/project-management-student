@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.popup .overlay,
+.popup-del .overlay {
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100vw;
+  height:100vh;
+  background:rgba(0,0,0,0.7);
+  z-index:6;
+  display:none;
+}
+
+.popup .popup-content {
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  background:#fff;
+  border-radius: 5px;
+  width:400px;
+  height:500px;
+  z-index:7;
+  text-align:center;
+  padding:20px;
+  box-sizing:border-box;
+}
+
+.popup .popup-content .container{
+  margin-top: -20px;
+}
+
+.popup .close-btn {
+  cursor:pointer;
+  position: absolute;
+  top: 3%;
+  left: 92%;
+  width:20px;
+  height:20px;
+}
+
+.popup .close-btn:hover i {
+  color: #3421C0;
+  transform: rotate(225deg);
+}
+
+.popup .close-btn i {
+  transform-origin: center;
+  transform: rotate(45deg);
+  color:#000;
+  transition: all 0.3s;
+}
+
+.popup.active .overlay {
+  display:block;
+}
+
+.popup.active .popup-content {
+  transition:all 300ms ease-in-out;
+  transform:translate(-50%,-50%) scale(1);
+}
+
+/* This is the delete popup */
+.popup-del .del-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  background:#fff;
+  border-radius: 5px;
+  width:300px;
+  height:150px;
+  z-index:3;
+  text-align:center;
+  padding:20px;
+  box-sizing:border-box;
+}
+
+.popup-del .del-content .del-title {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.popup-del .del-content .del-btn {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: nowrap;
+}
+
+.popup-del.active .overlay {
+  display:block;
+}
+
+.popup-del.active .del-content {
+  transition:all 300ms ease-in-out;
+  transform:translate(-50%,-50%) scale(1);
+}
+
+.del-content .remove,
+.del-content .yes-delete{
+  border: 2px solid #d62828 !important;
+  color: #d62828;
+}
+
+.del-content .remove::before,
+.del-content .yes-delete::before {
+  background-color: #d62828 !important;
+  color: #fff;
+}

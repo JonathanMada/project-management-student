@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+.container form.form-student {
+  width: 100% !important;
+  position: relative !important;
+}
+
+.main_body .container .header-wrap {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75vw;
+  height: 75px;
+  z-index: 4;
+  transition: all 0.3s linear;
+}
+
+.wrapper.active .main_body .container .header-wrap {
+  width: 86vw;
+}
+
+.student_background{
+  background-color: #e8edf5;
+  display: block;
+  position: fixed;
+  top: 65px;
+  left: 20%;
+  width: 110vw;
+  height: 175px;
+  z-index: 3;
+  transition: all 0.3s linear;
+}
+
+.wrapper.active .main_body .container .student_background {
+  left: 9.5%;
+}
+
+.header-wrap .check-delete,
+.header-wrap .check-select {
+  position: relative;
+  display: none;
+  width: 100px;
+  height: 35px;
+}
+
+.header-wrap .check-delete.active,
+.header-wrap .check-select {
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.header-wrap .check-delete .multidelete {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  background-color: #ec4732;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.header-wrap .check-select .multiselect {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  background-color: #06d6a0;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.check-delete .multidelete:hover {
+  background-color: #d62828;
+}
+
+.check-select .multiselect:hover {
+  background-color: #02c39a;
+}
+
+.main_body .container .student-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.add_student, .student_id, .student_name, .student_project, .student_deadline, .student_action {
+  position: relative;
+  display: block;
+}
+
+.student-wrap .heading {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 75%;
+  height: auto;
+  top: 205px;
+  z-index: 4;
+  position: fixed;
+  transition: all 0.3s linear;
+}
+
+.wrapper.active .main_body .container .student-wrap .heading {
+  width: 85%;
+}
+
+.add_student, .student_id, .student_name, .student_project, .student_deadline, .student_action {
+  position: relative;
+  display: inline-block;
+}
+
+.student-wrap .heading h4 {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.student_action h4 {
+  text-align: center;
+}
+
+.student-wrap .student_id {
+  width: 10%;
+}
+
+.student-wrap .student_deadline {
+  width: 15%;
+}
+
+.student-wrap .student_name,
+.student-wrap .student_project,
+.student-wrap .student_action {
+  width: 20%;
+}
+
+.student-wrap .add_student {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 15%;
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+.student-wrap .add_student .add,
+.student-wrap .add_student .add_content {
+  position: absolute;
+  display: block;
+  top: 50%;
+  height: 25px;
+  background-color: #3421C0;
+  color: #fff;
+  border-radius: 2px;
+}
+
+.student-wrap .add_student .add {
+  left: 0;
+  transform: translate(-50%, -50%);
+  width: 25px;
+}
+
+.student-wrap .add_student .add_content {
+  transform-origin: left;
+  left: 48%;
+  transform-origin: 0 0;
+  transform: translate(-50%, -50%) scaleX(0);
+  width: 130px;
+  border-radius: 0 2px 2px 0;
+  transition: 0.3s;
+}
+
+.student-wrap .add_student:hover .add_content {
+    transform: translate(-50%, -50%) scaleX(1);
+}
+
+.student-wrap .add_student .add_content p {
+  position: relative;
+  display: none;
+  transition: 0.5s ease-out;
+}
+
+.student-wrap .add_student:hover .add_content p {
+  display: block;
+  font-size: 0.8rem;
+  top: 18%;
+  left: 5%;
+}
+
+.student-wrap .add_student .add span i {
+  position: relative;
+  top: 15%;
+  left: 22%;
+  transition: all 0.3s;
+}
+
+.student-wrap .add_student:hover .add span i {
+  transform: rotate(135deg);
+}

@@ -1,0 +1,166 @@
+{% extends 'MilestoneApp/index.html' %}
+{% load static %}
+
+{% block title_content %}
+  <title>Project Management | Projects</title>
+{% endblock %}
+
+{% block add_content %}
+
+<div class="popup-del">
+  <div class="overlay">
+    <form id="delete" method="post">
+      {% csrf_token %}
+      <div class="del-content">
+        <div class="del-title">
+          <h3>Are you sure to delete this project?</h3>
+        </div>
+          <div class="del-btn">
+              <button type="submit" name="" value="" class='btn btn1 remove'>Remove</button>
+              <button type="button" name="del_btn" class='btn btn1 cancel'>Cancel</button>
+          </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="popup-list">
+  <div class="overlay"></div>
+  <div class="popup-content">
+    <div class="close-btn" onclick="close_popup()"><i class="fas fa-plus"></i></div>
+    <div class="container">
+      <div class="list-wrapper">
+        <div class="list-title">
+          <div class="list-project-image">
+            <div class="project-image" style='background-image: url("");'></div>
+          </div>
+          <div class="list-project-title">
+            <h1></h1>
+            <h3>List of students</h3>
+          </div>
+        </div>
+        <div class="list-unveil">
+          <div class="list-header">
+            <div class="head-detail">
+              <p>Students</p>
+            </div>
+            <div class="head-deadline">
+              <p>Deadlines</p>
+            </div>
+          </div>
+          <div class="list-item">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="popup" id="project">
+  <div class="overlay"></div>
+  <div class="popup-content">
+    <div class="close-btn" onclick='popup()'><i class="fas fa-plus"></i></div>
+    <div class="container">
+      <div class="login-content">
+        <form method="post" id="new_project" enctype="multipart/form-data">
+          {% csrf_token %}
+          <h2 class="title">Create a new project</h2>
+                <div class="input-div one">
+                   <div class="i">
+                      <i class="fas fa-user"></i>
+                   </div>
+                   <div class="div">
+                      <h5>Project Name</h5>
+                      {{ project_form.project_name }}
+                   </div>
+                </div>
+                <div class="input-div pass">
+                   <div class="i">
+                      <i class="fas fa-pencil-alt"></i>
+                   </div>
+                   <div class="div">
+                      <h5>Project Details</h5>
+                      {{ project_form.project_detail }}
+                   </div>
+                </div>
+                <div class="photo">
+                  {{ project_form.project_image }}
+                  <label class='label' for="file">
+                    <i class="far fa-image"></i>
+                    <p>&nbsp; Choose your photo</p>
+                  </label>
+                </div>
+                <button type="submit" class="btn btn1" value="">Create</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block page_content %}
+
+<div class="item_wrap">
+  {% if project_list %}
+    {% for project in project_list %}
+      <div class="card" id="card{{ project.id }}">
+        <div class="delete">
+          <div class="btn-delete">
+            <span name="{{ project.project_name }}"><i class="fas fa-trash"></i></span>
+          </div>
+        </div>
+        <div class="imgbox">
+          <div class="img" style="background-image: url('{{ project.project_image.url }}');"></div>
+        </div>
+        <div class="content">
+          <div class="group-content">
+            <h2>{{ project.project_name }}</h2>
+            <p>{{ project.project_detail }}</p>
+          </div>
+          <div class="group-btn">
+            <div class="middle">
+              <button class="btn btn1 details">Details</button>
+              <button class="btn btn1 list" value="{{ project.id }}">See List</button>
+              {% csrf_token %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="nocard" id="no-item">
+      <div class="nocard-cntn">
+        <div class="add-sign"><i class="fas fa-layer-group"></i></div>
+        <div class="add-cntn">
+          <h3>New project</h3>
+          <p>Create a new project for your students</p>
+          <button type="button" class="add-btn" onclick='popup()'>ADD</button>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  <div><p class="dummy-card">dummy-card</p></div>
+  <div><p class="dummy-card">dummy-card</p></div>
+  <div><p class="dummy-card">dummy-card</p></div>
+</div>
+
+<div class="add_card" onclick='popup()'>
+  <div class="add_sign">
+    <span class="plus_sign"><i class="fas fa-plus fa-2x"></i></span>
+  </div>
+</div>
+
+{% endblock %}
+
+<!-- This contains the javascript for this page -->
+{% block javascript_page %}
+<script type="text/javascript" src='{% static 'javascript/img-upload.js' %}'></script>
+<script type="text/javascript" src="{% static "javascript/ajax-request.js" %}"></script>
+<script type="text/javascript">
+  function close_popup(){
+    $('.popup-list').toggleClass('active')
+  }
+</script>
+{% endblock %}

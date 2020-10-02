@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+      <!-- <form class="" method="post"  enctype="multipart/form-data">
+        <label for="project_name">Name of the project</label>
+        <p>{{ project_form.project_name }}</p>
+        <label for="project_detail">The description of the project</label>
+        <p>{{ project_form.project_detail }}</p>
+        <label for="project_image">The illustration of the project</label>
+        <p>{{ project_form.project_image }}</p>
+        {% csrf_token %}
+        <button type="submit" name="button">Submit</button>
+      </form> -->
+      
+    <h1>Test project</h1>
+    {% if testings %}
+      {% for test in testings %}
+        <p>{{ test.project_name }}</p>
+        <p>{{ test.project_detail }}</p>
+        <img src="{{ test.project_image.url }}" alt="" width=20% height=auto>
+      {% endfor %}
+    {% endif %}
+  </body>
+</html>

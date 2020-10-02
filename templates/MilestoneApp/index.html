@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% block title_content %}
+    {% endblock %}
+    <link rel="stylesheet" href="{% static "css\main.css" %}">
+    <link rel="stylesheet" href="{% static "css\card.css" %}">
+    <link rel="stylesheet" href="{% static "css\popup.css" %}">
+    <link rel="stylesheet" href="{% static "css\form.css" %}">
+    <link rel="stylesheet" href="{% static "css\button.css" %}">
+    <link rel="stylesheet" href="{% static "css\student.css" %}">
+    <link rel="stylesheet" href="{% static "css\student-list.css" %}">
+    <link rel="stylesheet" href="{% static "css\student-popup.css" %}">
+    <link rel="stylesheet" href="{% static "css\popup-list.css" %}">
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+      crossorigin="anonymous">
+    </script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  </head>
+  <body>
+
+    <!-- Here we put the additional content -->
+    {% block add_content %}
+    {% endblock %}
+
+    <div class="wrapper">
+
+      <!-- Here we include the header of the page -->
+      {% include 'MilestoneApp/components/header.html' %}
+
+    	<div class="main_body">
+
+        <!-- Here we include the sidebar of the page -->
+        {% include 'MilestoneApp/components/sidebar.html' %}
+
+  	    <div class="container">
+          <!-- Here we include the main content of the page -->
+          {% block page_content%}
+          {% endblock %}
+  	    </div>
+
+    	</div>
+
+    </div>
+
+    <script type="text/javascript" src="{% static "javascript/main.js" %}"></script>
+    {% block javascript_page %}
+    {% endblock %}
+  </body>
+</html>

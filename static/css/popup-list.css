@@ -1,0 +1,196 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.popup-list .overlay {
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100vw;
+  height:100vh;
+  background:rgba(0,0,0,0.7);
+  z-index:6;
+  display:none;
+}
+
+.popup-list.active .overlay{
+  display: block;
+}
+
+.popup-list .popup-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 450px;
+  height: 450px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  z-index: 7;
+}
+
+.popup-list.active .popup-content {
+  transition: all 0.3s ease-in-out;
+  transform: translate(-50%,-50%) scale(1);
+}
+
+.popup-list .popup-content .close-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 10px;
+  left: 410px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  z-index: 8;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.popup-list .popup-content .close-btn:hover {
+  background-color: #ccc;
+}
+
+.popup-list .popup-content .close-btn i {
+  transform: rotate(45deg);
+}
+
+.popup-list .popup-content .container {
+  position: relative;
+  display: block;
+  padding: 40px 20px;
+  margin-top: -35px;
+}
+
+.popup-content .container .list-wrapper {
+  position: relative;
+  display: flex;
+  flex-flow: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.list-wrapper .list-title {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  height: 85px;
+  margin-bottom: 35px;
+  padding-top: 10px;
+}
+
+.list-title .list-project-image,
+.list-title .list-project-title{
+  position: relative;
+  display: inline-block;
+}
+
+.list-wrapper .list-title .list-project-image {
+  width: 25%;
+}
+
+.list-title .list-project-image .project-image{
+  width: 65px;
+  height: 65px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 5px;
+}
+
+.list-wrapper .list-title .list-project-title h1,
+.list-wrapper .list-title .list-project-title h3 {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.list-wrapper .list-title .list-project-title h1 {
+  font-size: 2.4rem;
+}
+
+.list-wrapper .list-unveil{
+  position: relative;
+  display: block;
+}
+
+.list-wrapper .list-unveil .list-header,
+.list-item .list-student .student-details{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}
+
+.list-wrapper .list-unveil .list-item {
+  position: relative;
+  display: block;
+  height: 210px;
+  overflow-y: scroll;
+  padding-left: 10px
+}
+
+.list-unveil .list-item .list-student {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  height: 55px;
+  font-size: 0.8rem;
+  border-bottom: 1px solid #e8edf5;
+}
+
+.list-item::-webkit-scrollbar {
+    width: 5px;
+    margin-left: 5px
+}
+
+.list-item::-webkit-scrollbar-track {
+  background: #fffff1;
+}
+
+.list-item::-webkit-scrollbar-thumb {
+  background: #e8edf5;
+  border-radius: 5px;
+}
+
+.list-item::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.list-wrapper .list-unveil .list-header{
+  background-color: #e8edf5;
+  border-radius: 3px;
+  height: 30px;
+  margin-bottom: 0;
+  margin-bottom: 2px;
+  padding: 0 5px;
+  font-size: 0.9rem;
+}
+
+
+.list-header .head-detail,
+.list-unveil .list-item .list-student .student-details {
+  width: 65%;
+}
+
+.list-student .student-details .student-img {
+  width: 35px;
+  height: 35px;
+  margin-right: 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+}
